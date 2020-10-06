@@ -60,15 +60,19 @@ window.renderStatistics = function (ctx, names, times) {
   );
 
   for (let i = 0; i < names.length; i++) {
-    ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    if (names[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    } else {
+      ctx.fillStyle = 'hsl(240, 100%, ' + (Math.random() * 100) + '%)';
+    }
     ctx.fillText(
       Math.round(times[i]),
       CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * i,
-      CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - BAR_HEIGHT - FONT_GAP - TEXT_HIGHT
+      CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - (BAR_HEIGHT * times[i]) / maxTime - FONT_GAP - TEXT_HIGHT
     );
     ctx.fillRect(
       CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * i,
-      CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - BAR_HEIGHT,
+      CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - (BAR_HEIGHT * times[i]) / maxTime,
       BAR_WIDTH,
       (BAR_HEIGHT * times[i]) / maxTime
     );
@@ -78,58 +82,4 @@ window.renderStatistics = function (ctx, names, times) {
       CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT
     );
   }
-/*
-  ctx.fillStyle = 'hsl(240, 100%, 50%)';
-  ctx.fillText(
-    'Time',
-    CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * 1,
-    CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - BAR_HEIGHT - FONT_GAP - TEXT_HIGHT
-  );
-  ctx.fillRect(
-    CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * 1,
-    CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - BAR_HEIGHT,
-    BAR_WIDTH,
-    BAR_HEIGHT
-  );
-  ctx.fillText(
-    'Кекс',
-    CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * 1,
-    CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT
-  );
-
-  ctx.fillStyle = 'hsl(240, 100%, 60%)';
-  ctx.fillText(
-    'Time',
-    CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * 2,
-    CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - BAR_HEIGHT - FONT_GAP - TEXT_HIGHT
-  );
-  ctx.fillRect(
-    CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * 2,
-    CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - BAR_HEIGHT,
-    BAR_WIDTH,
-    BAR_HEIGHT
-  );
-  ctx.fillText(
-    'Катя',
-    CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * 2,
-    CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT
-  );
-
-  ctx.fillStyle = 'hsl(240, 100%, 70%)';
-  ctx.fillText(
-    'Time',
-    CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * 3,
-    CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - BAR_HEIGHT - FONT_GAP - TEXT_HIGHT
-  );
-  ctx.fillRect(
-    CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * 3,
-    CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - BAR_HEIGHT,
-    BAR_WIDTH,
-    BAR_HEIGHT
-  );
-  ctx.fillText(
-    'Игорь',
-    CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * 3,
-    CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT
-  );*/
 };
