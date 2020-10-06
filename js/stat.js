@@ -32,38 +32,38 @@ window.renderStatistics = function (ctx, names, times) {
       ctx,
       CLOUD_X + GAP,
       CLOUD_Y + GAP,
-      'rgba(0, 0, 0, 0.7)'
+      `rgba(0, 0, 0, 0.7)`
   );
   renderCloud(
       ctx,
       CLOUD_X,
       CLOUD_Y,
-      '#fff'
+      `#fff`
   );
 
-  ctx.fillStyle = '#000';
+  ctx.fillStyle = `#000`;
 
   let maxTime = getMaxElement(times);
 
-  ctx.font = '16px PT Mono';
-  ctx.textBaseline = 'hanging';
+  ctx.font = `16px PT Mono`;
+  ctx.textBaseline = `hanging`;
   ctx.fillText(
-      'Ура вы победили!',
+      `Ура вы победили!`,
       CLOUD_X + GAP,
       CLOUD_Y + GAP
   );
 
   ctx.fillText(
-      'Список результатов:',
+      `Список результатов:`,
       CLOUD_X + GAP,
       CLOUD_Y + GAP + TEXT_HIGHT + FONT_GAP
   );
 
   for (let i = 0; i < names.length; i++) {
-    if (names[i] === 'Вы') {
-      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    if (names[i] === `Вы`) {
+      ctx.fillStyle = `rgba(255, 0, 0, 1)`;
     } else {
-      ctx.fillStyle = 'hsl(240, 100%, ' + (Math.random() * 100) + '%)';
+      ctx.fillStyle = `hsl(240, 100%, ` + (Math.random() * 100) + `%)`;
     }
     ctx.fillText(
         Math.round(times[i]),
