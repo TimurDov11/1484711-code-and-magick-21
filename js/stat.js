@@ -7,24 +7,13 @@ const CLOUD_Y = 10;
 const GAP = 20;
 const FONT_GAP = 5;
 const TEXT_HIGHT = 16;
+const BAR_GAP = 50;
 const BAR_WIDTH = 40;
 const BAR_HEIGHT = 150;
 
-let renderCloud = function (ctx, x, y, color) {
+const renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
-};
-
-let getMaxElement = function (arr) {
-  let maxElement = arr[0];
-
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > maxElement) {
-      maxElement = arr[i];
-    }
-  }
-
-  return maxElement;
 };
 
 window.renderStatistics = function (ctx, names, times) {
@@ -43,7 +32,7 @@ window.renderStatistics = function (ctx, names, times) {
 
   ctx.fillStyle = `#000`;
 
-  let maxTime = getMaxElement(times);
+  const maxTime = Math.max(...times);
 
   ctx.font = `16px PT Mono`;
   ctx.textBaseline = `hanging`;
@@ -60,25 +49,28 @@ window.renderStatistics = function (ctx, names, times) {
   );
 
   for (let i = 0; i < names.length; i++) {
+    let color;
+
     if (names[i] === `Вы`) {
-      ctx.fillStyle = `rgba(255, 0, 0, 1)`;
+      color = `rgba(255, 0, 0, 1)`;
     } else {
-      ctx.fillStyle = `hsl(240, 100%, ` + (Math.random() * 100) + `%)`;
+      color = `hsl(240, 100%, ` + (Math.random() * 100) + `%)`;
     }
+    ctx.fillStyle = color;
     ctx.fillText(
         Math.round(times[i]),
-        CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * i,
+        CLOUD_X + GAP * 2 + (BAR_WIDTH + BAR_GAP) * i,
         CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - (BAR_HEIGHT * times[i]) / maxTime - FONT_GAP - TEXT_HIGHT
     );
     ctx.fillRect(
-        CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * i,
+        CLOUD_X + GAP * 2 + (BAR_WIDTH + BAR_GAP) * i,
         CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT - FONT_GAP - (BAR_HEIGHT * times[i]) / maxTime,
         BAR_WIDTH,
         (BAR_HEIGHT * times[i]) / maxTime
     );
     ctx.fillText(
         names[i],
-        CLOUD_X + GAP * 2 + (BAR_WIDTH + GAP) * i,
+        CLOUD_X + GAP * 2 + (BAR_WIDTH + BAR_GAP) * i,
         CLOUD_Y + CLOUD_HEIGHT - GAP - TEXT_HIGHT
     );
   }
