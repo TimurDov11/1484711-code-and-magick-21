@@ -17,11 +17,17 @@ const similarWizardTemplate = document.querySelector(`#similar-wizard-template`)
 
 const similarWizard = similarWizardTemplate.querySelector(`.setup-similar-item`);
 
+const getRandomData = (data) => {
+  const datum = data[Math.floor(Math.random() * data.length)];
+
+  return datum;
+}
+
 const wizards = [
   {
-    name: `${WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)]} ${WIZARD_SURNAMES[Math.floor(Math.random() * WIZARD_SURNAMES.length)]}`,
-    coatColor: COAT_COLORS[Math.floor(Math.random() * COAT_COLORS.length)],
-    eyesColor: EYES_COLORS[Math.floor(Math.random() * EYES_COLORS.length)]
+    name: `${getRandomData(WIZARD_NAMES)} ${getRandomData(WIZARD_NAMES)}`,
+    coatColor: getRandomData(COAT_COLORS),
+    eyesColor: getRandomData(EYES_COLORS)
   },
   {
     name: `${WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)]} ${WIZARD_SURNAMES[Math.floor(Math.random() * WIZARD_SURNAMES.length)]}`,
