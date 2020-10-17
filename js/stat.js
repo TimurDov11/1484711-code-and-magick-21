@@ -11,12 +11,12 @@ const BAR_GAP = 50;
 const BAR_WIDTH = 40;
 const BAR_HEIGHT = 150;
 
-const renderCloud = function (ctx, x, y, color) {
+const renderCloud = (ctx, x, y, color) => {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 };
 
-window.renderStatistics = function (ctx, names, times) {
+window.renderStatistics = (ctx, names, times) => {
   renderCloud(
       ctx,
       CLOUD_X + GAP,
