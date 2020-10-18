@@ -21,7 +21,7 @@ const getRandomData = (data) => {
   const datum = data[Math.floor(Math.random() * data.length)];
 
   return datum;
-}
+};
 
 const createWizards = (name, surname, coatColor, eyesColor) => {
   let wizards = [];
@@ -31,10 +31,10 @@ const createWizards = (name, surname, coatColor, eyesColor) => {
       name: `${getRandomData(name)} ${getRandomData(surname)}`,
       coatColor: getRandomData(coatColor),
       eyesColor: getRandomData(eyesColor)
-    }
+    };
   }
   return wizards;
-}
+};
 
 const renderWizard = (wizard) => {
   const wizardElement = similarWizard.cloneNode(true);
